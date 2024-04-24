@@ -20,11 +20,3 @@ def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
                     return False
                 i += 1
     return True
-
-print(posicao_suporta([
-    [' ', ' ', ' ', 'N'],
-    [' ', ' ', ' ', 'N'],
-    ['N', 'N', ' ', 'N'],
-    [' ', ' ', ' ', ' ']
-], 2, 3, 2, 'h'))
-    

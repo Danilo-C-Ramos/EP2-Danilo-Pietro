@@ -19,13 +19,3 @@ def aloca_navios(mapa, navios):
             elif orientacao == 'v':
                 mapa[linha + i][coluna] = 'N'
             i += 1
-    return mapa
-        
-print(aloca_navios([
-    [' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' ']
-], [2, 3, 4]))         
-
