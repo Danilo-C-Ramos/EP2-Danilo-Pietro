@@ -1,7 +1,7 @@
 import random
 import suporta_posicao as sup
 
-def aloca_navios(mapa, navios):    
+def aloca_navios(mapa, navios):  
     for navio in navios:
         linha = random.randint(0, len(mapa) - 1)
         coluna = random.randint(0, len(mapa) -1)
