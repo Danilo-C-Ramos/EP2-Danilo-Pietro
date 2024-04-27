@@ -10,27 +10,22 @@ def inicia_jogo_texto():
     print('|                                           |')
     print('=============================================\n')
     
-    return 
+    return 'Iniciando o jogo!'
  
 def inicia_jogo(N):
-    print('Iniciando o jogo!')
-    
     pais_maquina = random.choice(paises.lista_paises)
+    print("Selected country:", pais_maquina)
     mapa = cria_mapa.cria_mapa(N)
-    
+    print("Initial Map:")
+    for row in mapa:
+        print(' '.join(row))
     alocar.aloca_navios(mapa, paises.blocos[pais_maquina])
-
-    i = 1
-    for pais, navios in paises.paises.items():
-        print(f'{i}:', pais)
-        for navio, quantidade in navios.items():
-            print(f'   {quantidade} {navio}')
-        print('')
-        i += 1
-    
+    print("Final Map:")
+    for row in mapa:
+        print(' '.join(row))
     return
 
 
-def inicia_jogo_novamente():
-    print('Iniciando o jogo novamente!')
+#def inicia_jogo_novamente():
+#    print('Iniciando o jogo novamente!')
     
