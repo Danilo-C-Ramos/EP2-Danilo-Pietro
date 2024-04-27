@@ -38,11 +38,11 @@ paises = {
 lista_paises = ['Brasil', 'França','Austrália','Rússia','Japão']
 
 blocos = {
-    'Brasil': [2,3,3,4,5],
-    'França': [2,2,2,3,4,5,2],
-    'Austrália': [2,2,2,3,4,5,2],
-    'Rússia': [2,3,4,4,5,2],
-    'Japão': [3,3,2,2,3,2]
+    'Brasil': [5,4,3,3,2],
+    'França': [5,4,3,2,2,2,2],
+    'Austrália': [5,4,3,2,2,2,2],
+    'Rússia': [5,4,4,3,2,2],
+    'Japão': [3,3,3,2,2,2]
 }
 
 '''

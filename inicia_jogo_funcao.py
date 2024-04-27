@@ -3,17 +3,22 @@ import random
 import aloca_navios as alocar
 import cria_mapa
 
-def inicia_jogo():
+def inicia_jogo_texto():
     print('=============================================\n|                                           |')
     print('| Design de Software INSPER - Batalha Naval |')
     print('|       Danilo Ramos e Pietro Bettega       |')
     print('|                                           |')
     print('=============================================\n')
+    
+    return 
+ 
+def inicia_jogo(N):
     print('Iniciando o jogo!')
     
     pais_maquina = random.choice(paises.lista_paises)
-    mapa = cria_mapa.cria_mapa()
-    alocar.aloca_navios(mapa, paises.paises[pais_maquina])
+    mapa = cria_mapa.cria_mapa(N)
+    
+    alocar.aloca_navios(mapa, paises.blocos[pais_maquina])
 
     i = 1
     for pais, navios in paises.paises.items():
@@ -22,7 +27,9 @@ def inicia_jogo():
             print(f'   {quantidade} {navio}')
         print('')
         i += 1
-    return 
+    
+    return
+
 
 def inicia_jogo_novamente():
     print('Iniciando o jogo novamente!')

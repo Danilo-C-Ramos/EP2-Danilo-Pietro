@@ -1,6 +1,6 @@
 def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
     if orientacao.strip().lower() == 'v':
-        final = (linha) + blocos
+        final = linha + blocos
         i = linha
         if final > len(mapa):
             return False
@@ -10,7 +10,7 @@ def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
                     return False
                 i += 1
     elif orientacao.strip().lower() == 'h':
-        final = coluna + blocos
+        final = coluna + blocos 
         i = coluna
         if final > len(mapa[0]):
             return False
