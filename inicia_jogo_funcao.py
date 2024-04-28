@@ -1,7 +1,12 @@
-import paises
+import parametros
 import random
 import aloca_navios as alocar
-import cria_mapa
+
+def cria_mapa(N):
+    mapa = [
+        [' ' for coluna in range(N + 1)] #Cria uma linha com N " ", ou seja, N colunas
+             for linha in range(N + 1)] # Cria N linhas
+    return mapa
 
 def inicia_jogo_texto():
     print('=============================================\n|                                           |')
@@ -10,22 +15,48 @@ def inicia_jogo_texto():
     print('|                                           |')
     print('=============================================\n')
     
-    return 'Iniciando o jogo!'
- 
-def inicia_jogo(N):
-    pais_maquina = random.choice(paises.lista_paises)
-    print("Selected country:", pais_maquina)
-    mapa = cria_mapa.cria_mapa(N)
-    print("Initial Map:")
-    for row in mapa:
-        print(' '.join(row))
-    alocar.aloca_navios(mapa, paises.blocos[pais_maquina])
-    print("Final Map:")
-    for row in mapa:
-        print(' '.join(row))
     return
+ 
+def inicia_jogo(N, pais_maquina):
+    print('Iniciando o jogo!')
+
+    print(f'Computador está alocando a frota do país: {pais_maquina}')
+    
+    mapa_jogador = cria_mapa(N)
+    mapa_maquina = cria_mapa(N)
+    mapa_maquina = alocar.aloca_navios(mapa_maquina, parametros.blocos[pais_maquina])
+    
+    c = 1
+    for pais, navios in parametros.paises.items():
+        print(f'{c}: {pais}')
+        c += 1
+        for navio, quantidade in navios.items():
+            print(f'    {navio}: {quantidade}')
+        
+    numero = int(input('Qual o nomero do seu país? ')) - 1
+    pais_jogador = parametros.lista_paises[numero]
+    frota_jogador = parametros.paises[pais_jogador]
+
+    return mapa_maquina, mapa_jogador, pais_jogador, frota_jogador
+
+def printa_mapa(mapa, pais_maquina, pais_jogador):
+    linha = 1
+    espaco = len(f'{linha} {mapa[linha]} {linha}') - len(f'Computador: {pais_maquina}') + 1 
+     #Espaco variável para printar o nome do pais do Jogador
+
+    print(f'Computador: {pais_maquina}', f' ' * espaco, f'Jogador: {pais_jogador}')
+     #Printa o país da máquina e o país do jogador em cima dos mapas
+
+    while linha < len(mapa):
+        print(f'{linha} {mapa[linha]} {linha}   {linha} {mapa[linha]} {linha}')
+        linha += 1
+    
+    return mapa
+
+
+
+
 
 
 #def inicia_jogo_novamente():
 #    print('Iniciando o jogo novamente!')
-    

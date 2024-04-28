@@ -1,35 +1,17 @@
-import paises
+import inicia_jogo_funcao as iniciar
 import random
-import aloca_navios as alocar
-import cria_mapa
-import random
+import parametros
 
-def inicia_jogo(N):
-    pais_maquina = random.choice(paises.lista_paises)
-    print("Selected country:", pais_maquina)
-    mapa = cria_mapa.cria_mapa(N)
-    print("Initial Map:")
-    for row in mapa:
-        print(' '.join(row))
-    alocar.aloca_navios(mapa, paises.blocos[pais_maquina])
-    print("Final Map:")
-    for row in mapa:
-        print(' '.join(row))
-    return
+iniciar.inicia_jogo_texto() #Printa texto introdutório
 
-print('=============================================\n|                                           |')
-print('| Design de Software INSPER - Batalha Naval |')
-print('|       Danilo Ramos e Pietro Bettega       |')
-print('|                                           |')
-print('=============================================\n')
-print('Iniciando o jogo!')
+tamanho_mapa = int(input('Tamanho do Mapa (mínimo de 5 colunas): '))
 
-tamanho_mapa = int(input('Tamanho do Mapa (mínimo de 8): '))
-if tamanho_mapa < 8:
-    tamanho_mapa = int(input('Tamanho do Mapa (mínimo de 8): '))
+pais_maquina = random.choice(parametros.lista_paises)
 
-inicia_jogo(tamanho_mapa)
+mapa_maquina, mapa_jogador, pais_jogador, frota_jogador = iniciar.inicia_jogo(tamanho_mapa, pais_maquina)
+#Cria um mapa para a máquina com os navios dela alocados e printa as opcoes para o jogador escolher
 
+iniciar.printa_mapa(mapa_jogador, pais_maquina, pais_jogador)
 
 """
 alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
