@@ -1,9 +1,7 @@
-
 def foi_derrotado(matriz):
     for i in matriz:
-        for j in i:
-            if j == "N":
-                return False
+        if 'N' in i:
+            return False
     return True
 
 print(foi_derrotado([

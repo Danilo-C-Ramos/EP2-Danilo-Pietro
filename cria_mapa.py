@@ -1,7 +1,7 @@
-def cria_mapa (N):
+def cria_mapa(N):
     lisf=[]
     lis=[]
-    for i in range (len(N)):
+    for i in range(N):
         lis.append('')
         for j in range (len(lis)):
             lisf.append(lis)
