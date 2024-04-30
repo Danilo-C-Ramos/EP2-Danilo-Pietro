@@ -2,7 +2,7 @@ def cria_mapa(N):
     lisf=[]
     lis=[]
     for i in range(N):
-        lis.append('')
+        lis.append('     ')
         for j in range (len(lis)):
             lisf.append(lis)
     return lisf

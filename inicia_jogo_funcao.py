@@ -1,6 +1,7 @@
 import parametros
 import random
 import aloca_navios as alocar
+from detalhes import *
 
 def cria_mapa(N):
     mapa = [
@@ -20,8 +21,9 @@ def inicia_jogo_texto():
 def inicia_jogo(N, pais_maquina):
     print('Iniciando o jogo!')
 
-    print(f'Computador está alocando a frota do país: {pais_maquina}')
-    
+    print(f'Computador está alocando a frota do país: {pais_maquina}...')
+    loading()
+
     mapa_jogador = cria_mapa(N)
     mapa_maquina = cria_mapa(N)
     mapa_maquina = alocar.aloca_navios(mapa_maquina, parametros.blocos[pais_maquina])
@@ -46,13 +48,16 @@ def printa_mapa(mapa, pais_maquina, pais_jogador):
 
     print(f'Computador: {pais_maquina}', f' ' * espaco, f'Jogador: {pais_jogador}')
      #Printa o país da máquina e o país do jogador em cima dos mapas
+    
+    #lista_black = [('     ' * len(mapa))] * len(mapa[0])
+    
 
     while linha < len(mapa):
-        print(f'{linha} {mapa[linha]} {linha}   {linha} {mapa[linha]} {linha}')
+        print(f'{linha}', f'{mapa[linha]}', f'{linha}', f'{linha}', f'{mapa[linha]}', f'{linha}')
+        
         linha += 1
-    
+     
     return mapa
-
 
 
 
