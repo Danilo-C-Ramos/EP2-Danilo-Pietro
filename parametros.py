@@ -45,6 +45,7 @@ blocos = {
     'Japão': [3,3,3,2,2,2]
 }
 alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+alfabeto_virgula = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z'
 
 CONFIGURACAO = {
     'Destroyer': 3,

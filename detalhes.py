@@ -5,7 +5,7 @@ def loading():
         time.sleep(0.01)
         sys.stdout.write(u"\u001b[1000D" + str(i + 1) + "%")
         sys.stdout.flush()
-    print
+    print()
 
 def contagem():
     print("Iniciando a batalha!")

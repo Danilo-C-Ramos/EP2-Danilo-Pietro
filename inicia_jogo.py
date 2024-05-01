@@ -40,17 +40,6 @@ def inicia_jogo(N, pais_maquina):
 
 
 def printa_mapa(mapa_visu, mapa, pais_maquina, pais_jogador):
-    for linha in mapa_visu:
-        for coluna in linha:
-            print(coluna)
-
-
-
-
-
-
-
-
     linha = 1
     espaco = len(f'{linha} {mapa[linha]} {linha}') - len(f'Computador: {pais_maquina}') + 1 
      #Espaco variável para printar o nome do pais do Jogador
@@ -62,14 +51,13 @@ def printa_mapa(mapa_visu, mapa, pais_maquina, pais_jogador):
     
 
     while linha < len(mapa):
-        print(f'{linha}', f'{neutro[linha]}', f'{linha}', f'{linha}', f'{mapa[linha]}', f'{linha}')
+        print(f'{linha}', f'{mapa_visu[linha]}', f'{linha}', f'{linha}', f'{mapa[linha]}', f'{linha}')
         
         linha += 1
-     
     return mapa
 
 
-def aloca_jogador(frota, tamanho_mapa, mapa_jogador, pais_maquina, pais_jogador):
+def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, tamanho_mapa):
     for navio in frota:
         blocos = parametros.CONFIGURACAO[navio]
         
@@ -150,14 +138,14 @@ def aloca_jogador(frota, tamanho_mapa, mapa_jogador, pais_maquina, pais_jogador)
 
         for bloco in range(parametros.CONFIGURACAO[navio]): #Alocando o navio
             if orientacao == 'v':
-                mapa_jogador[linha + bloco][coluna] = 'N'
+                mapa_jogador[linha + bloco][coluna] = '\u001b[42m▒\u001b[0m'
             elif orientacao == 'h':
-                mapa_jogador[linha][coluna + bloco] = 'N'
+                mapa_jogador[linha][coluna + bloco] = '\u001b[42m▒\u001b[0m'
         
         time.sleep(0.3)
 
         print('Navio alocado!\n')
-        printa_mapa(tamanho_mapa, mapa_jogador, pais_maquina, pais_jogador)
+        formata_mapa(mapa_visu, mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador)
     
     return ''
 
@@ -220,3 +208,56 @@ def posicao_ataque():
                 coluna = 0
 
     return letra, linha, coluna
+
+def formata_mapa(mapa_visu,mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador):  
+    lista_letras = parametros.alfabeto_virgula[: (tamanho_mapa * 2) - 1].split(',')
+    
+    espaco = tamanho_mapa * 3 + 8 - len(f'Computador: {pais_maquina}')
+     #Espaco variável para printar o nome do pais do Jogador
+
+    print(f'Computador: {pais_maquina}', f' ' * espaco, f'Jogador: {pais_jogador}' )
+     #Printa o país da máquina e o país do jogador em cima dos mapas
+
+    print(' ', end = ' ')
+    for letra in lista_letras:
+        print(letra, end = '  ')
+    print('      ', end = '')
+    for letra in lista_letras:
+        print(letra, end = '  ')
+    
+    linha = 1
+    #for i in range(len(mapa_visu)):
+    #    mapa_visu[i].insert(0, linha)
+    #    mapa_visu[i].insert(len(mapa_visu) + 1, linha)
+    #    mapa_jogador[i].insert(0, linha)
+    #    mapa_jogador[i].insert(len(mapa_visu) + 1, linha)
+    #    linha += 1
+    
+    c = 0
+    for linha in range(len(mapa_visu)):
+        print()
+        print(linha, end = '')
+        for valor in mapa_visu[linha]:
+            print(valor, end = '  ')
+        
+        print(linha, end = '    ')
+        print(linha, end = '')
+        for valor in mapa_jogador[linha]:
+            print(valor, end = '  ')
+        
+        print(linha, end = '')
+        c += 1
+    print()
+    
+    print(' ', end = ' ')
+    for letra in lista_letras:
+        print(letra, end = '  ')
+    print('      ', end = '')
+    for letra in lista_letras:
+        print(letra, end = '  ')
+    print('\n')
+
+    return
+
+print('Thominhas', end = ' ')
+print('Arroz')
