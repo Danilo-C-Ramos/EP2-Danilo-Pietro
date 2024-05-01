@@ -5,7 +5,7 @@ def foi_derrotado(matriz):
     return True
 
 print(foi_derrotado([
-    ['X', ' ', 'N'],
+    ['X', ' ', 'X'],
     ['X', 'A', 'X'],
     ['X', ' ', 'X']
 ]))

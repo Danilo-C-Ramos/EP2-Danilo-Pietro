@@ -7,6 +7,17 @@ def loading():
         sys.stdout.flush()
     print
 
+def contagem():
+    print("Iniciando a batalha!")
+    for i in range(5, 0, -1):
+        time.sleep(0.8)
+        print((i))
+    print
+
+#print(contagem())
+#print(loading())
+
+
 """
 Background Black: \u001b[40m
 Background Red: \u001b[41m

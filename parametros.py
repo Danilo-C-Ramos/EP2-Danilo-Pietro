@@ -44,14 +44,13 @@ blocos = {
     'Rússia': [5,4,4,3,2,2],
     'Japão': [3,3,3,2,2,2]
 }
+alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-'''
 CONFIGURACAO = {
-    'destroyer': 3,
-    'porta-avioes': 5,
-    'submarino': 2,
-    'torpedeiro': 3,
-    'cruzador': 2,
-    'couracado': 4
+    'Destroyer': 3,
+    'Porta-Aviões': 5,
+    'Submarino': 2,
+    'Torpedeiro': 3,
+    'Cruzador': 2,
+    'Couraçado': 4
 }
-'''

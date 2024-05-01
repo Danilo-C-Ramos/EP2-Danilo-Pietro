@@ -1,8 +1,5 @@
 def cria_mapa(N):
-    lisf=[]
-    lis=[]
-    for i in range(N):
-        lis.append('     ')
-        for j in range (len(lis)):
-            lisf.append(lis)
-    return lisf
+    mapa = [
+        [' ' for coluna in range(N + 1)] #Cria uma linha com N " ", ou seja, N colunas
+             for linha in range(N + 1)] # Cria N linhas
+    return mapa
