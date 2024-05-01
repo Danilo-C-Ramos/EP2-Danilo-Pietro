@@ -13,7 +13,8 @@ def inicia_jogo_texto():
     print('=============================================\n')
     
     return
- 
+
+
 def inicia_jogo(N, pais_maquina):
     print('Iniciando o jogo!')
 
@@ -38,8 +39,17 @@ def inicia_jogo(N, pais_maquina):
     return mapa_maquina, mapa_jogador, pais_jogador, frota_jogador
 
 
-def printa_mapa(N, mapa, pais_maquina, pais_jogador):
-    neutro = cria_mapa(N)
+def printa_mapa(mapa_visu, mapa, pais_maquina, pais_jogador):
+    for linha in mapa_visu:
+        for coluna in linha:
+            print(coluna)
+
+
+
+
+
+
+
 
     linha = 1
     espaco = len(f'{linha} {mapa[linha]} {linha}') - len(f'Computador: {pais_maquina}') + 1 
@@ -150,3 +160,63 @@ def aloca_jogador(frota, tamanho_mapa, mapa_jogador, pais_maquina, pais_jogador)
         printa_mapa(tamanho_mapa, mapa_jogador, pais_maquina, pais_jogador)
     
     return ''
+
+
+def posicao_ataque():
+    posicao = input('Digite a posicao (coordenada): ')
+
+    t = len(posicao) >= 2
+
+    if posicao[0].isalpha() and t:
+        letra = posicao[0].upper()
+        f = True
+    else:
+        f = False
+        
+    if t:
+        numero = posicao[1]
+    else:
+        numero = ''
+        
+    if numero.isdigit() and t:
+        linha = int(posicao[1])
+        f = True
+    else:
+        linha = 0
+        f = False
+        
+    if t:
+        coluna = parametros.alfabeto.index(letra)
+    else:
+        coluna = 0
+
+
+    while not f or not t:
+            posicao = input('Digite a posicao (coordenada): ')
+
+            t = len(posicao) >= 2
+
+            if posicao[0].isalpha() and t:
+                letra = posicao[0].upper()
+                f = True
+            else:
+                f = False
+            
+            if t:
+                numero = posicao[1]
+            else:
+                numero = ''
+            
+            if numero.isdigit() and t:
+                linha = int(posicao[1])
+                f = True
+            else:
+                linha = 0
+                f = False
+            
+            if t:
+                coluna = parametros.alfabeto.index(letra)
+            else:
+                coluna = 0
+
+    return letra, linha, coluna
