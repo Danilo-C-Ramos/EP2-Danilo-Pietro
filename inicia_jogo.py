@@ -14,7 +14,6 @@ def inicia_jogo_texto():
     
     return
 
-
 def inicia_jogo(N, pais_maquina):
     print('Iniciando o jogo!')
 
@@ -37,25 +36,6 @@ def inicia_jogo(N, pais_maquina):
     frota_jogador = parametros.paises[pais_jogador]
 
     return mapa_maquina, mapa_jogador, pais_jogador, frota_jogador
-
-
-def printa_mapa(mapa_visu, mapa, pais_maquina, pais_jogador):
-    linha = 1
-    espaco = len(f'{linha} {mapa[linha]} {linha}') - len(f'Computador: {pais_maquina}') + 1 
-     #Espaco variável para printar o nome do pais do Jogador
-
-    print(f'Computador: {pais_maquina}', f' ' * espaco, f'Jogador: {pais_jogador}')
-     #Printa o país da máquina e o país do jogador em cima dos mapas
-    
-    #lista_black = [('     ' * len(mapa))] * len(mapa[0])
-    
-
-    while linha < len(mapa):
-        print(f'{linha}', f'{mapa_visu[linha]}', f'{linha}', f'{linha}', f'{mapa[linha]}', f'{linha}')
-        
-        linha += 1
-    return mapa
-
 
 def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, tamanho_mapa):
     for navio in frota:
@@ -80,7 +60,7 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
             numero = ''
         
         if numero.isdigit() and t:
-            linha = int(posicao[1])
+            linha = int(posicao[1]) - 1
             f = True
         else:
             linha = 0
@@ -117,7 +97,7 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
                 numero = ''
             
             if numero.isdigit() and t:
-                linha = int(posicao[1])
+                linha = int(posicao[1]) - 1
                 f = True
             else:
                 linha = 0
@@ -167,7 +147,7 @@ def posicao_ataque():
         numero = ''
         
     if numero.isdigit() and t:
-        linha = int(posicao[1])
+        linha = int(posicao[1]) - 1
         f = True
     else:
         linha = 0
@@ -218,46 +198,41 @@ def formata_mapa(mapa_visu,mapa_jogador, tamanho_mapa, pais_maquina, pais_jogado
     print(f'Computador: {pais_maquina}', f' ' * espaco, f'Jogador: {pais_jogador}' )
      #Printa o país da máquina e o país do jogador em cima dos mapas
 
-    print(' ', end = ' ')
+    print('  ', end = ' ')
     for letra in lista_letras:
         print(letra, end = '  ')
-    print('      ', end = '')
+    print('         ', end = '')
     for letra in lista_letras:
         print(letra, end = '  ')
     
-    linha = 1
-    #for i in range(len(mapa_visu)):
-    #    mapa_visu[i].insert(0, linha)
-    #    mapa_visu[i].insert(len(mapa_visu) + 1, linha)
-    #    mapa_jogador[i].insert(0, linha)
-    #    mapa_jogador[i].insert(len(mapa_visu) + 1, linha)
-    #    linha += 1
+    linha = [' 1',' 2',' 3',' 4',' 5',
+             ' 6',' 7',' 8',' 9','10',
+             '11','12','13','14','15',
+             '16','17','18','19','20',
+             '21','22','23','24','25', '26']
     
     c = 0
-    for linha in range(len(mapa_visu)):
+    for i in range(len(mapa_visu)):
         print()
-        print(linha, end = '')
-        for valor in mapa_visu[linha]:
+        print(linha[i], end = '')
+        for valor in mapa_visu[i]:
             print(valor, end = '  ')
         
-        print(linha, end = '    ')
-        print(linha, end = '')
-        for valor in mapa_jogador[linha]:
+        print(linha[i], end = '    ')
+        print(linha[i], end = '')
+        for valor in mapa_jogador[i]:
             print(valor, end = '  ')
         
-        print(linha, end = '')
+        print(linha[i], end = '')
         c += 1
     print()
     
-    print(' ', end = ' ')
+    print('  ', end = ' ')
     for letra in lista_letras:
         print(letra, end = '  ')
-    print('      ', end = '')
+    print('         ', end = '')
     for letra in lista_letras:
         print(letra, end = '  ')
     print('\n')
 
     return
-
-print('Thominhas', end = ' ')
-print('Arroz')
