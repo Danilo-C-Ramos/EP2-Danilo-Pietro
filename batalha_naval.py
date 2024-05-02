@@ -47,7 +47,7 @@ while not jogo_terminou:
             linha = random.randint(1, len(mapa_maquina)) - 1
             coluna = random.randint(1, len(mapa_maquina)) - 1
             letra = parametros.alfabeto[coluna]
-            
+
         if mapa_jogador[linha][coluna] == '\u001b[42m│▒│\u001b[0m':
             mapa_jogador[linha][coluna] = '\u001b[41m│▒│\u001b[0m'
             print(f'Computador   ---> {letra}{linha + 1}   Navio!')

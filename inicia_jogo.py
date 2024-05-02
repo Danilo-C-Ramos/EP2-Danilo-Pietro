@@ -30,8 +30,17 @@ def inicia_jogo(N, pais_maquina):
         c += 1
         for navio, quantidade in navios.items():
             print(f'    {navio}: {quantidade}')
-        
-    numero = int(input('Qual o nomero do seu país? ')) - 1
+    
+    inp = input('Qual o nomero do seu país? ')
+    certo = True
+    while not inp.isdigit() or certo:
+        if inp.isdigit():
+            if not int(inp) < 1 and not int(inp) > 5:
+                numero = int(inp) - 1
+                certo = False
+        if not inp.isdigit() or certo:
+            inp = input('Qual o nomero do seu país? ')
+
     pais_jogador = parametros.lista_paises[numero]
     frota_jogador = parametros.paises[pais_jogador]
 
