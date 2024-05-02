@@ -42,7 +42,12 @@ while not jogo_terminou:
         coluna = random.randint(1, len(mapa_maquina)) - 1
         letra = parametros.alfabeto[coluna]
 
-
+        while mapa_jogador[linha][coluna].strip() == 'A' or mapa_jogador[linha][coluna].strip() == 'X':
+            print(f'Ja jogado, tente novamente!')
+            linha = random.randint(1, len(mapa_maquina)) - 1
+            coluna = random.randint(1, len(mapa_maquina)) - 1
+            letra = parametros.alfabeto[coluna]
+            
         if mapa_jogador[linha][coluna] == '\u001b[42m│▒│\u001b[0m':
             mapa_jogador[linha][coluna] = '\u001b[41m│▒│\u001b[0m'
             print(f'Computador   ---> {letra}{linha + 1}   Navio!')
@@ -53,8 +58,7 @@ while not jogo_terminou:
             print(f'Computador   ---> {letra}{linha+ 1}   Água!')
             print()
             play = False
-        elif mapa_maquina[linha][coluna].strip() == 'A':
-            print(f'Ja jogado, tente novamente!')
+        
         
         formata_mapa(mapa_visu, mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador)
 
@@ -70,19 +74,22 @@ while not jogo_terminou:
 
     play_j = True
     while play_j:
+        while mapa_maquina[linha_j][coluna_j].strip() == 'A' or mapa_maquina[linha_j][coluna_j].strip() == 'X':
+            print(f'Ja jogado, tente novamente!')
+            jogada = posicao_ataque(tamanho_mapa)
+            letra_j = jogada[0]
+            linha_j = jogada[1]
+            coluna_j = jogada[2]
         if mapa_maquina[linha_j][coluna_j].strip() == 'N':
             mapa_visu[linha_j][coluna_j] = '\u001b[41m│▒│\u001b[0m'
-            mapa_maquina[linha_j][coluna_j] == 'X'
+            mapa_maquina[linha_j][coluna_j] = 'X'
             print(f'Jogador   ---> {letra_j}{linha_j + 1}   Navio!')
             play_j = False
         elif mapa_maquina[linha_j][coluna_j].strip() == '':
             mapa_visu[linha_j][coluna_j] = '\u001b[44m▒▒▒\u001b[0m'
-            mapa_maquina[linha_j][coluna_j] == 'A'
+            mapa_maquina[linha_j][coluna_j] = 'A'
             print(f'Jogador   ---> {letra_j}{linha_j + 1}   Água!')
             play_j = False
-        elif mapa_maquina[linha_j][coluna_j].strip() == 'A' or mapa_maquina[linha_j][coluna_j].strip() == 'N':
-            print(f'Ja jogado, tente novamente!')
-            posicao_ataque()
 
         time.sleep(0.5)   
         

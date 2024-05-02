@@ -173,13 +173,13 @@ def posicao_ataque(tamanho_mapa):
             letra = posicao[0].upper()
             if parametros.alfabeto.index(letra) >= tamanho_mapa:
                 f = False
-                letra = 'A'
+                letra = ''
             f = True
         else:
-            letra = 'A'
+            letra = ''
             f = False
     else:
-        letra = 'A'
+        letra = ''
         f = False
         
     if t:
