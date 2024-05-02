@@ -48,26 +48,40 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
 
         t = len(posicao) >= 2
 
-        if posicao[0].isalpha() and t:
-            letra = posicao[0].upper()
-            f = True
+        if t:
+            if posicao[0].isalpha():
+                letra = posicao[0].upper()
+                f = True
+            else:
+                letra = 'A'
+                f = False
         else:
+            letra = 'A'
             f = False
         
         if t:
-            numero = posicao[1]
+            numero = posicao[1:3]
         else:
             numero = ''
         
-        if numero.isdigit() and t:
-            linha = int(posicao[1]) - 1
-            f = True
+        if t:
+            if numero.isdigit() and int(posicao[1:3]) - 1 < tamanho_mapa:
+                linha = int(posicao[1:3]) - 1
+                f = True
+            else:
+                linha = 0
+                f = False
         else:
             linha = 0
             f = False
         
         if t:
-            coluna = parametros.alfabeto.index(letra)
+            if parametros.alfabeto.index(letra) >= tamanho_mapa:
+                f = False
+                coluna = 0
+            else:
+                f = True
+                coluna = parametros.alfabeto.index(letra)
         else:
             coluna = 0
 
@@ -77,6 +91,7 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
             orientacao = io.lower()
             o = True
         else:
+            orientacao = 'h'
             o = False
 
         while not sup.posicao_suporta(mapa_jogador, blocos, linha, coluna, orientacao) or not f or not o or not t:
@@ -85,26 +100,40 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
 
             t = len(posicao) >= 2
 
-            if posicao[0].isalpha() and t:
-                letra = posicao[0].upper()
-                f = True
-            else:
-                f = False
-            
             if t:
-                numero = posicao[1]
+                if posicao[0].isalpha():
+                    letra = posicao[0].upper()
+                    f = True
+                else:
+                    letra = 'A'
+                    f = False
+            else:
+                letra = 'A'
+                f = False
+
+            if t:
+                numero = posicao[1:3]
             else:
                 numero = ''
             
-            if numero.isdigit() and t:
-                linha = int(posicao[1]) - 1
-                f = True
+            if t:
+                if numero.isdigit() and int(posicao[1:3]) - 1 < tamanho_mapa:
+                    linha = int(posicao[1:3]) - 1
+                    f = True
+                else:
+                    linha = 0
+                    f = False
             else:
                 linha = 0
                 f = False
-            
+
             if t:
-                coluna = parametros.alfabeto.index(letra)
+                if parametros.alfabeto.index(letra) >= tamanho_mapa:
+                    f = False
+                    coluna = 0
+                else:
+                    f = True
+                    coluna = parametros.alfabeto.index(letra)
             else:
                 coluna = 0
 
@@ -114,13 +143,14 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
                 orientacao = io.lower()
                 o = True
             else:
+                orientacao = 'h'
                 o = False
 
         for bloco in range(parametros.CONFIGURACAO[navio]): #Alocando o navio
             if orientacao == 'v':
-                mapa_jogador[linha + bloco][coluna] = '\u001b[42m▒\u001b[0m'
+                mapa_jogador[linha + bloco][coluna] = '\u001b[42m│▒│\u001b[0m'
             elif orientacao == 'h':
-                mapa_jogador[linha][coluna + bloco] = '\u001b[42m▒\u001b[0m'
+                mapa_jogador[linha][coluna + bloco] = '\u001b[42m│▒│\u001b[0m'
         
         time.sleep(0.3)
 
@@ -130,31 +160,51 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
     return ''
 
 
-def posicao_ataque():
+def posicao_ataque(tamanho_mapa):
+    
     posicao = input('Digite a posicao (coordenada): ')
+    
+    t= True
+    if (len(posicao) < 2) or posicao == '':
+        t= False
 
-    t = len(posicao) >= 2
-
-    if posicao[0].isalpha() and t:
-        letra = posicao[0].upper()
-        f = True
+    if t:
+        if posicao[0].isalpha():
+            letra = posicao[0].upper()
+            if parametros.alfabeto.index(letra) >= tamanho_mapa:
+                f = False
+                letra = 'A'
+            f = True
+        else:
+            letra = 'A'
+            f = False
     else:
+        letra = 'A'
         f = False
         
     if t:
-        numero = posicao[1]
+        numero = posicao[1:3]
     else:
         numero = ''
         
-    if numero.isdigit() and t:
-        linha = int(posicao[1]) - 1
-        f = True
+    if t: 
+        if numero.isdigit() and int(posicao[1:3]) - 1 < tamanho_mapa:
+            linha = int(posicao[1:3]) - 1
+            f = True
+        else:
+            linha = 0
+            f = False
     else:
         linha = 0
         f = False
         
     if t:
-        coluna = parametros.alfabeto.index(letra)
+        if parametros.alfabeto.index(letra) >= tamanho_mapa:
+            f = False
+            coluna = 0
+        else:
+            f = True
+            coluna = parametros.alfabeto.index(letra)
     else:
         coluna = 0
 
@@ -164,35 +214,49 @@ def posicao_ataque():
 
             t = len(posicao) >= 2
 
-            if posicao[0].isalpha() and t:
-                letra = posicao[0].upper()
-                f = True
+            if t:
+                if posicao[0].isalpha():
+                    letra = posicao[0].upper()
+                    if parametros.alfabeto.index(letra) >= tamanho_mapa:
+                        f = False
+                        letra = 'A'
+                    f = True
+                else:
+                    letra = 'A'
+                    f = False
             else:
+                letra = 'A'
                 f = False
             
             if t:
-                numero = posicao[1]
+                numero = posicao[1:3]
             else:
                 numero = ''
             
-            if numero.isdigit() and t:
-                linha = int(posicao[1])
-                f = True
-            else:
-                linha = 0
-                f = False
+            if t:
+                if numero.isdigit() and int(posicao[1:3]) - 1 < tamanho_mapa:
+                    linha = int(posicao[1:3]) - 1
+                    f = True
+                else:
+                    linha = 0
+                    f = False
             
             if t:
-                coluna = parametros.alfabeto.index(letra)
+                if parametros.alfabeto.index(letra) > tamanho_mapa:
+                    f = False
+                    coluna = 0
+                else:
+                    f = True
+                    coluna = parametros.alfabeto.index(letra)
             else:
                 coluna = 0
 
     return letra, linha, coluna
 
-def formata_mapa(mapa_visu,mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador):  
+def formata_mapa(mapa_maquina,mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador):  
     lista_letras = parametros.alfabeto_virgula[: (tamanho_mapa * 2) - 1].split(',')
     
-    espaco = tamanho_mapa * 3 + 8 - len(f'Computador: {pais_maquina}')
+    espaco = tamanho_mapa * 3 + 6 - len(f'Computador: {pais_maquina}')
      #Espaco variável para printar o nome do pais do Jogador
 
     print(f'Computador: {pais_maquina}', f' ' * espaco, f'Jogador: {pais_jogador}' )
@@ -201,7 +265,7 @@ def formata_mapa(mapa_visu,mapa_jogador, tamanho_mapa, pais_maquina, pais_jogado
     print('  ', end = ' ')
     for letra in lista_letras:
         print(letra, end = '  ')
-    print('         ', end = '')
+    print('        ', end = '')
     for letra in lista_letras:
         print(letra, end = '  ')
     
@@ -212,16 +276,22 @@ def formata_mapa(mapa_visu,mapa_jogador, tamanho_mapa, pais_maquina, pais_jogado
              '21','22','23','24','25', '26']
     
     c = 0
-    for i in range(len(mapa_visu)):
+    for i in range(len(mapa_maquina)):
         print()
         print(linha[i], end = '')
-        for valor in mapa_visu[i]:
-            print(valor, end = '  ')
+        for valor in mapa_maquina[i]:
+            if valor == ' ':
+                print(valor, end = '  ')
+            else:
+                print(valor, end = '')
         
         print(linha[i], end = '    ')
         print(linha[i], end = '')
         for valor in mapa_jogador[i]:
-            print(valor, end = '  ')
+            if valor == ' ':
+                print(valor, end = '  ')
+            else:
+                print(valor, end = '')
         
         print(linha[i], end = '')
         c += 1
