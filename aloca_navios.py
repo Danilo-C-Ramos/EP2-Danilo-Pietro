@@ -1,16 +1,16 @@
 import random
 import suporta_posicao as sup
 
-def aloca_navios(mapa, navios):  
+def aloca_navios(mapa, navios):
     mapa_maquina = mapa
     for blocos in navios:
-        linha = random.randint(0, len(mapa_maquina) - 1)
-        coluna = random.randint(0, len(mapa_maquina) - 1)
+        linha = random.randint(1, len(mapa_maquina)) - 1
+        coluna = random.randint(1, len(mapa_maquina)) - 1
         orientacao = random.choice(['h', 'v'])
 
         while not sup.posicao_suporta(mapa_maquina, blocos, linha, coluna, orientacao):
-            linha = random.randint(0, len(mapa_maquina) - 1)
-            coluna = random.randint(0, len(mapa_maquina) -1)
+            linha = random.randint(1, len(mapa_maquina)) - 1
+            coluna = random.randint(1, len(mapa_maquina)) - 1
             orientacao = random.choice(['h', 'v'])
         
         for j in range(blocos):
