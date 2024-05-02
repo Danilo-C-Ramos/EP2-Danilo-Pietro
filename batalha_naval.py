@@ -7,10 +7,18 @@ from verifica_vitoria import *
 
 inicia_jogo_texto() #Printa texto introdutório
 
-tamanho_mapa = int(input('Tamanho do Mapa (mínimo de 6 colunas): '))
+tamanho_mapa_in = input('Tamanho do Mapa (mínimo de 6 colunas): ')
 
-while tamanho_mapa <= 5 or tamanho_mapa > 27:
-    tamanho_mapa = int(input('Tamanho do Mapa (mínimo de 6 colunas): '))
+certo = True
+while not tamanho_mapa_in.isdigit() or certo:
+    if tamanho_mapa_in.isdigit():
+        if not int(tamanho_mapa_in) <= 5 and not int(tamanho_mapa_in) > 27:
+            tamanho_mapa = int(tamanho_mapa_in)
+            certo = False
+    if not tamanho_mapa_in.isdigit() or certo:
+        tamanho_mapa_in = input('Tamanho do Mapa (mínimo de 6 colunas): ')
+    
+     
 
 pais_maquina = random.choice(parametros.lista_paises)
 mapa_visu = cria_mapa(tamanho_mapa)
