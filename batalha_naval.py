@@ -61,12 +61,10 @@ while jogando:
                 print()
                 play = False
             
-            
-            formata_mapa(mapa_visu, mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador)
-
         if foi_derrotado(mapa_jogador):
             vencedor = 'Computador'
             jogo_terminou = True
+            formata_mapa(mapa_visu, mapa_jogador, tamanho_mapa, pais_maquina, pais_jogador)
             break
 
         jogada = posicao_ataque(tamanho_mapa)

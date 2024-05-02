@@ -62,10 +62,10 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
                 letra = posicao[0].upper()
                 f = True
             else:
-                letra = 'A'
+                letra = ''
                 f = False
         else:
-            letra = 'A'
+            letra = ''
             f = False
         
         if t:
@@ -114,10 +114,10 @@ def aloca_jogador(frota, mapa_visu, mapa_jogador, pais_maquina, pais_jogador, ta
                     letra = posicao[0].upper()
                     f = True
                 else:
-                    letra = 'A'
+                    letra = ''
                     f = False
             else:
-                letra = 'A'
+                letra = ''
                 f = False
 
             if t:
@@ -183,7 +183,8 @@ def posicao_ataque(tamanho_mapa):
             if parametros.alfabeto.index(letra) >= tamanho_mapa:
                 f = False
                 letra = ''
-            f = True
+            else:
+                f = True
         else:
             letra = ''
             f = False
@@ -196,7 +197,7 @@ def posicao_ataque(tamanho_mapa):
     else:
         numero = ''
         
-    if t: 
+    if t and f: 
         if numero.isdigit() and int(posicao[1:3]) - 1 < tamanho_mapa:
             linha = int(posicao[1:3]) - 1
             f = True
@@ -207,7 +208,7 @@ def posicao_ataque(tamanho_mapa):
         linha = 0
         f = False
         
-    if t:
+    if t and f:
         if parametros.alfabeto.index(letra) >= tamanho_mapa:
             f = False
             coluna = 0
@@ -228,13 +229,14 @@ def posicao_ataque(tamanho_mapa):
                     letra = posicao[0].upper()
                     if parametros.alfabeto.index(letra) >= tamanho_mapa:
                         f = False
-                        letra = 'A'
-                    f = True
+                        letra = ''
+                    else:
+                        f = True
                 else:
-                    letra = 'A'
+                    letra = ''
                     f = False
             else:
-                letra = 'A'
+                letra = ''
                 f = False
             
             if t:
@@ -242,7 +244,7 @@ def posicao_ataque(tamanho_mapa):
             else:
                 numero = ''
             
-            if t:
+            if t and f:
                 if numero.isdigit() and int(posicao[1:3]) - 1 < tamanho_mapa:
                     linha = int(posicao[1:3]) - 1
                     f = True
@@ -250,7 +252,7 @@ def posicao_ataque(tamanho_mapa):
                     linha = 0
                     f = False
             
-            if t:
+            if t and f:
                 if parametros.alfabeto.index(letra) > tamanho_mapa:
                     f = False
                     coluna = 0
